@@ -1,0 +1,37 @@
+﻿@model IEnumerable<WebApplication1.Models.User>
+
+<h2>Список работников</h2>
+<a asp-action="AddUser" asp-controller="User" class="btn">Добавить сотрудника</a>
+
+<table class="table">
+    <tr>
+        <th>Идентификатор</th>
+        <th>Фамилия</th>
+        <th>Имя</th>
+        <th>Отчество</th>
+        <th>Дата приёма на работу </th>
+        <th>Должность</th>
+        <th>Компания</th>
+    </tr>
+
+    @foreach (var user in Model)
+    {
+<tr>
+    <td>@user.Id</td>
+    <td>@user.Surname</td>
+    <td>@user.Name</td>
+    <td>@user.Patronymic</td>
+    <td>@user.Date.ToShortDateString()</td>
+    <td>@user.Position</td>
+    <td>@user.Company</td>
+    <td>
+        <form asp-action="DeleteUser" asp-route-Id="@user.Id" method="post">
+            <a class="btn" asp-action="UpdateUser" asp-route-Id="@user.Id">Изменить</a>
+            <button type="submit" class="btn btn-sm btn-danger">
+                Удалить
+            </button>
+        </form>
+    </td>
+</tr>
+    }
+</table>

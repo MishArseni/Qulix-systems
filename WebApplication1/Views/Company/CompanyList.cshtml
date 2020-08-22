@@ -1,0 +1,31 @@
+﻿@model IEnumerable<WebApplication1.Models.Company>
+
+<h2>Список компаний</h2>
+<a asp-action="AddCompany" asp-controller="Company" class="btn">Добавить компанию</a>
+
+<table class="table">
+    <tr>
+        <th>Идентификатор</th>
+        <th>Наименование</th>
+        <th>Размер компании</th>
+        <th>Организационно-правовая форма</th>
+    </tr>
+
+    @foreach (var company in Model)
+    {
+        <tr>
+            <td>@company.Id</td>
+            <td>@company.Name</td>
+            <td>@company.Size</td>
+            <td>@company.Form</td>
+            <td>
+                <form asp-action="DeleteCompany" asp-route-Id="@company.Id" method="post">
+                    <a class="btn" asp-action="UpdateCompany" asp-route-Id="@company.Id">Изменить</a>
+                    <button type="submit" class="btn btn-sm btn-danger">
+                        Удалить
+                    </button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>

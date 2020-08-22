@@ -1,0 +1,27 @@
+﻿@model WebApplication1.Models.Company
+@{
+    ViewBag.Title = "Изменение компании";
+}
+<form asp-action="UpdateCompany" asp-controller="Company">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Name" class="control-label">Название</label>
+        <input type="text" asp-for="Name" class="form-control" />
+        
+    </div>
+    <div class="form-group">
+        <label asp-for="Form" class="control-label">Организационно-правовая форма</label>
+        <input type="text" asp-for="Form" class="form-control" />
+        
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Изменить" class="btn btn-outline-secondary" />
+        <a class="btn" asp-action="CompanyList">Отмена</a>
+    </div>
+</form>
+
+@section scripts{
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
